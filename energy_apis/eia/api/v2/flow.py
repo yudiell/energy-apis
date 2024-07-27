@@ -27,24 +27,23 @@ def get_data(postman: Postman = Postman(), **kwargs: dict) -> None:
 
 def run(
     collection: Collection,
-    env: str,
-    request_name: str,
-    dataset_frequency: str = "monthly",
+    kwargs: dict,
 ):
-    data = get_data(
-        collection=collection,
-        env=env,
-        request_name=request_name,
-        frequency=dataset_frequency,
-        recordOffset="0",
-        sortColumn="period",
-        sortDirection="asc",
-    )
+    params = {
+        "recordOffset": 0,
+        "sortColumn": "period",
+        "sortDirection": "asc",
+    }
+    kwargs.update(params)
+
+    data = get_data(collection=collection, **kwargs)
+
+    # ---------------------------------------------------------------------------------------------------------------------
 
     import pandas as pd
 
-    records = jmespath.search("response.data", json.loads(data))
-
-    df = pd.DataFrame(records)
+    records: list[dict] = jmespath.search(
+        expression="response.data", data=json.loads(data)
+    )
+    df = pd.DataFrame(data=records)
     print(df.head())
-    # END
