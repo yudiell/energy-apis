@@ -1,23 +1,19 @@
-Create a local virtual environment using:
-  python -m venv .venv
-  python3 -m venv .venv
+Getting data from the EIA crude-oil-imports endopoint.
+Supported endpoints: 
 
----
+- crude-oil-imports
+- electric-power-operational-data 
 
-On Windows:
-`.venv\Scripts\activate`
-Bash: 
-`source .venv/bin/activate`
+Please see the defaults of the request. 
 
----
+You can modify the collection to accomodate more endpoints. 
 
-`pip install poetry`
+See the EIA API v2 documentation. 
 
-`poetry config virtualenvs.path .venv`
 
----
+Install poetry:
 
-poetry install
+    pip install poetry
 
 ---
 
