@@ -21,3 +21,4 @@ Install poetry:
 Run the project using a development environment variable.
    
     poetry run eia-api --environment dev --request crude-oil-imports
+    poetry run eia-api --environment dev --request electric-power-operational-data
