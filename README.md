@@ -16,6 +16,8 @@ Install poetry:
 
     pip install poetry
 
+    poetry install
+
 ---
 
 Run the project using a development environment variable.
