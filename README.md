@@ -19,4 +19,4 @@ poetry install
 ---
 
 - Run the project using a development environment variable.
-  poetry run eia-api -e dev
+  poetry run eia-api -e dev -r crude-oil-imports
