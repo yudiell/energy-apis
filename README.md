@@ -11,8 +11,8 @@ Bash:
 
 ---
 
-```pip install poetry
-poetry config virtualenvs.path .venv```
+`pip install poetry`
+`poetry config virtualenvs.path .venv`
 
 ---
 
