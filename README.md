@@ -12,7 +12,7 @@ Bash:
 ---
 
 pip install poetry
-poetry config virtualenvs.path .venv
+```poetry config virtualenvs.path .venv
 
 ---
 
