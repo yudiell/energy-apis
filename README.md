@@ -15,7 +15,6 @@ See the EIA API v2 documentation.
 Install poetry:
 
     pip install poetry
-
     poetry install
 
 ---
