@@ -4,8 +4,12 @@ Create a local virtual environment using:
 
 ---
 
-On Windows: .venv\Scripts\activate
-Bash: source .venv/bin/activate
+On Windows:
+
+.venv\Scripts\activate
+Bash: 
+
+source .venv/bin/activate
 
 ---
 
