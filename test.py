@@ -18,7 +18,7 @@ def get_data(collection: Collection, **kwargs: dict) -> None:
 
 get_data(
     collection=Collection(
-        collection_file="/Users/Yudiell.Hernandez/github/energy-apis/postman/collections/EIA APIv2.postman_collection.json"
+        collection_file="postman/collections/EIA APIv2.postman_collection.json"
     ),
     request_name="crude-oil-imports",
 )
