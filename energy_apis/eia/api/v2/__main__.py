@@ -8,7 +8,7 @@ It requres an environment variale named EIA_API_KEY.
 import argparse
 
 
-from python_postman.postman import Postman
+from python_postman.collection import Collection
 from energy_apis.eia.api.v2 import flow
 
 
@@ -40,9 +40,9 @@ def main() -> None:
     args = parser.parse_args()
     kwargs: dict = dict(args._get_kwargs())
 
-    postman = Postman()
-    collections = postman._get_collections(dir="postman/collections")
-    collection = postman._get_collection(name="EIA APIv2", collections=collections)
+    collection = Collection(
+        collection_file="/Users/Yudiell.Hernandez/github/energy-apis/postman/collections/EIA APIv2.postman_collection.json"
+    )
     flow.run(
         collection=collection,
         kwargs=kwargs,

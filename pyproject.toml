@@ -6,11 +6,11 @@ authors = ["Yudiell Hernandez <yudiell@outlook.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.8.1"
 python-postman = { git = "https://github.com/yudiell/python-postman.git" }
 
 retry = "^0.9.2"
-pandas = "^2.2.2"
+pandas = ">=2.0.3"
 [tool.isort]
 profile = "black"
 
