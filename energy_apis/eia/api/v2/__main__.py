@@ -41,7 +41,7 @@ def main() -> None:
     kwargs: dict = dict(args._get_kwargs())
 
     collection = Collection(
-        collection_file="/Users/Yudiell.Hernandez/github/energy-apis/postman/collections/EIA APIv2.postman_collection.json"
+        collection_file="postman/collections/EIA APIv2.postman_collection.json"
     )
     flow.run(
         collection=collection,

@@ -13,7 +13,7 @@ def get_data(collection: Collection, **kwargs: dict) -> None:
     name = kwargs.get("request_name")
     collection_request = collection.get_request(name=name)
     prepared_request: PreparedRequest = PreparedRequest(request=collection_request)
-    print(prepared_request._request.url)
+    prepared_request.send
 
 
 get_data(

@@ -4,8 +4,8 @@ import json
 import jmespath
 from logging import Logger
 
-from python_postman.modules.http import PreparedRequest
-from python_postman.postman import Collection
+from python_postman.collection import Collection
+from python_postman.request import Request
 from retry import retry
 
 logger = Logger(name="Message: ")
@@ -15,34 +15,32 @@ logger = Logger(name="Message: ")
 def get_data(collection: Collection, **kwargs: dict) -> None:
     """Get the data."""
     name = kwargs.get("request_name")
-    collection_request = collection.get_request(name=name)
-    print(collection_request.name)
-    prepared_request: PreparedRequest = PreparedRequest(request=collection_request)
-
-    # response = prepared_request.send
-    # response_content = response.content
-    # return response_content
+    request: Request = collection.get_request(name=name)
+    request.send(kwargs=kwargs)
+    
+    return request.response
 
 
-# def run(
-#     collection: Collection,
-#     kwargs: dict,
-# ):
-#     params = {
-#         "recordOffset": 0,
-#         "sortColumn": "period",
-#         "sortDirection": "asc",
-#     }
-#     kwargs.update(params)
+def run(
+    collection: Collection,
+    kwargs: dict,
+):
+    params = {
+        "recordOffset": 0,
+        "sortColumn": "period",
+        "sortDirection": "asc",
+        "dataFrequency": "monthly",
+    }
+    kwargs.update(params)
 
-#     data = get_data(collection=collection, **kwargs)
+    data = get_data(collection=collection, **kwargs)
 
 #     # ---------------------------------------------------------------------------------------------------------------------
 
-#     import pandas as pd
+    import pandas as pd
 
-#     records: list[dict] = jmespath.search(
-#         expression="response.data", data=json.loads(data)
-#     )
-#     df = pd.DataFrame(data=records)
-#     print(df.head())
+    records: list[dict] = jmespath.search(
+        expression="response.data", data=json.loads(data.content)
+    )
+    df = pd.DataFrame(data=records)
+    print(df.head())
