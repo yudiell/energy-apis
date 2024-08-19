@@ -20,7 +20,9 @@ def get_data(collection: Collection, **kwargs: dict) -> None:
     
     return request.response
 
-# Run the flow for the EIA API. You can pass in the collection and the kwargs.
+# Run the flow for the EIA API. You can pass kwargs to the flow, kwargs are applied to
+# The query url variables, query params, headers, and body.
+# The kwargs must match the variables in the postman collection.
 def run(
     collection: Collection,
     kwargs: dict,
