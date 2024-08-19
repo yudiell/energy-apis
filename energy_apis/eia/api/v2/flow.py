@@ -10,7 +10,7 @@ from retry import retry
 
 logger = Logger(name="Message: ")
 
-
+# Get the data from the EIA API, using the collection and the request name.
 @retry(tries=3, delay=5, backoff=3, logger=logger)
 def get_data(collection: Collection, **kwargs: dict) -> None:
     """Get the data."""
@@ -20,7 +20,7 @@ def get_data(collection: Collection, **kwargs: dict) -> None:
     
     return request.response
 
-
+# Run the flow for the EIA API. You can pass in the collection and the kwargs.
 def run(
     collection: Collection,
     kwargs: dict,
@@ -29,14 +29,13 @@ def run(
         "recordOffset": 0,
         "sortColumn": "period",
         "sortDirection": "asc",
-        "dataFrequency": "monthly",
     }
     kwargs.update(params)
 
     data = get_data(collection=collection, **kwargs)
 
-#     # ---------------------------------------------------------------------------------------------------------------------
-
+# ---------------------------------------------------------------------------------------------------------------------
+# Once data is returned, it can be processed using the following code snippet:
     import pandas as pd
 
     records: list[dict] = jmespath.search(
