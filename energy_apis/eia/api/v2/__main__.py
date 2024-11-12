@@ -4,9 +4,15 @@ The main function is the entry point of the eia flow.
 It parses the command line arguments that this particular api endpoint requires.
 It requres an environment variale named EIA_API_KEY.
 """
+
 from python_postman.collection import Collection
 from python_postman.utils.cli import Cli
+
 from energy_apis.eia.api.v2 import flow
+
+# import flow
+
+# from flow import run
 
 
 def main() -> None:
@@ -16,44 +22,45 @@ def main() -> None:
     cli = Cli()
     kwargs = cli.parse_arguments()
 
-
-    collection = Collection(
+    collection = Collection.from_file(
         collection_file="postman/collections/EIA APIv2.postman_collection.json"
     )
+
     flow.run(
         collection=collection,
         kwargs=kwargs,
     )
 
+
 # ---------------------------------------------------------------------------------------------------------------------
 # You can add your own custom keyword arguments implementation.
-    # import argparse
+# import argparse
 
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument(
-    #     "--environment",
-    #     help="The environment to run the model in.",
-    #     type=str,
-    #     required=True,
-    # )
-    # parser.add_argument(
-    #     "--request_name",
-    #     help="The EIA postman collection request name. [crude-oil-imports, electric-power-operational-data]. Refer to the Postman App.",
-    #     type=str,
-    # )
-    # parser.add_argument(
-    #     "--data_frequency",
-    #     help="The EIA api dataset frequency.[monthly, yearly, etc]. Refer to eia documentation.",
-    #     type=str,
-    # )
-    # parser.add_argument(
-    #     "--verbose",
-    #     help="The verbosity of the logs.",
-    #     type=str,
-    # )
+# parser = argparse.ArgumentParser()
+# parser.add_argument(
+#     "--environment",
+#     help="The environment to run the model in.",
+#     type=str,
+#     required=True,
+# )
+# parser.add_argument(
+#     "--request_name",
+#     help="The EIA postman collection request name. [crude-oil-imports, electric-power-operational-data]. Refer to the Postman App.",
+#     type=str,
+# )
+# parser.add_argument(
+#     "--data_frequency",
+#     help="The EIA api dataset frequency.[monthly, yearly, etc]. Refer to eia documentation.",
+#     type=str,
+# )
+# parser.add_argument(
+#     "--verbose",
+#     help="The verbosity of the logs.",
+#     type=str,
+# )
 
-    # args = parser.parse_args()
-    # kwargs: dict = dict(args._get_kwargs())
+# args = parser.parse_args()
+# kwargs: dict = dict(args._get_kwargs())
 
 if __name__ == "__main__":
     main()
